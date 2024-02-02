@@ -2,3 +2,11 @@
     margin: 0;
     padding: 0;
 }
+
+.cell {
+    height:50px;
+    width:50px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: top;
+}
