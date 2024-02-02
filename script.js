@@ -179,7 +179,6 @@ function GameController(
             gameOver = true;
             return;
         } else {
-            console.log(activePlayer.record.getReverseDiag());
             switchPlayerTurn();
             printNewRound();
             round++;
@@ -210,17 +209,17 @@ function GameController(
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
 
-
-        if (game.getGameOver()) {
-            if (game.getRound() >= game.getLastRound()) {
-                turnDiv.textContent = 'Draw...';
-            } else {
-                turnDiv.textContent = `${activePlayer.name} wins!`;
-            }
+        if (game.getRound() > game.getLastRound()) {
+            turnDiv.textContent = 'Draw...';
         } else {
-            turnDiv.textContent = `${activePlayer.name}'s turn. Round ${game.getRound()}`;
+            if (game.getGameOver()) {
+                turnDiv.textContent = `${activePlayer.name} wins!`;
+            } else {
+                turnDiv.textContent = `${activePlayer.name}'s turn. Round ${game.getRound()}`;
+            }
+    
         }
-
+        
         board.forEach((row, i) => {
             const newRow = document.createElement("div");
             row.forEach((cell, j) => {
